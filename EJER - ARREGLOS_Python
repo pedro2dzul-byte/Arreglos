@@ -1,0 +1,30 @@
+class GestionVentas:
+    def __init__(self):
+        self.matriz = [[0 for _ in range(3)] for _ in range(12)]
+
+    def insertar_venta(self, mes, departamento, cantidad):
+        self.matriz[mes][departamento] = cantidad
+        print(f" Venta de ${cantidad} agregada con éxito.")
+
+    def buscar_venta(self, cantidad_buscada):
+        encontrado = False
+        for fila in range(12):
+            for columna in range(3):
+                if self.matriz[fila][columna] == cantidad_buscada:
+                    print(f" ¡Venta encontrada! Está en el mes index [{fila}] y departamento index [{columna}].")
+                    encontrado = True
+        
+        if not encontrado:
+            print(" No se encontró ninguna venta con esa cantidad.")
+
+    def eliminar_venta(self, mes, departamento):
+        self.matriz[mes][departamento] = 0
+        print(f" Venta eliminada del mes index [{mes}] y departamento index [{departamento}].")
+
+
+tienda = GestionVentas()
+
+tienda.insertar_venta(0, 0, 1500)   
+tienda.insertar_venta(1, 2, 800)    
+tienda.buscar_venta(1500)
+tienda.eliminar_venta(0, 0)
