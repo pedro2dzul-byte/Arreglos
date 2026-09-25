@@ -1,0 +1,38 @@
+public class GestionVentas {
+
+    static double[][] matriz = new double[12][3];
+
+    public static void insertarVenta(int mes, int departamento, double cantidad) {
+        matriz[mes][departamento] = cantidad;
+        System.out.println(" Venta de $" + cantidad + " guardada correctamente.");
+    }
+
+    public static void buscarVenta(double cantidadBuscada) {
+        boolean encontrado = false;
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == cantidadBuscada) {
+                    System.out.println(" ¡Venta encontrada! En el mes index [" + i + "] y departamento index [" + j + "].");
+                    encontrado = true;
+                }
+            }
+        }
+        if (!encontrado) {
+            System.out.println(" No se encontró ninguna venta con esa cantidad.");
+        }
+    }
+
+    public static void eliminarVenta(int mes, int departamento) {
+        matriz[mes][departamento] = 0;
+        System.out.println(" Venta eliminada correctamente.");
+    }
+
+
+    public static void main(String[] args) {
+
+        insertarVenta(0, 0, 1500.0); 
+        insertarVenta(1, 2, 800.0);  
+        buscarVenta(1500.0);
+        eliminarVenta(0, 0);
+    }
+}
